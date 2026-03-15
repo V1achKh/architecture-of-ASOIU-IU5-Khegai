@@ -62,4 +62,4 @@ static int GetDamerauLevenshteinDistance(string str1Param, string str2Param)
     }
 
     return matrix[str1Len, str2Len];
-}
+}   
