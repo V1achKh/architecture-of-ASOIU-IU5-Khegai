@@ -1,11 +1,9 @@
 ﻿using System;
 
-Console.WriteLine("Программа вычисления расстояния Дамерау-Левенштейна");
-
 while (true)
 {
     Console.Write("\nВведите первую строку (или 'exit' для выхода): ");
-    string str1 = Console.ReadLine();
+    string? str1 = Console.ReadLine();
 
     if (str1 == null || str1.ToLower() == "exit")
     {
@@ -13,68 +11,55 @@ while (true)
     }
 
     Console.Write("Введите вторую строку: ");
-    string str2 = Console.ReadLine();
+    string? str2 = Console.ReadLine();
+    if (str2 == null) str2 = "";
 
-    int distance = dist_Leven_Dam(str1, str2);
-
-    if (distance == -1)
-    {
-        Console.WriteLine("Ошибка вычисления (null строки).");
-    }
-    else
-    {
-        Console.WriteLine($"Расстояние Дамерау-Левенштейна: {distance}");
-    }
+    int distance = GetDamerauLevenshteinDistance(str1, str2);
+    Console.WriteLine($"Расстояние Дамерау-Левенштейна: {distance}");
 }
 
-/// <summary>
-/// Вычисление расстояния Дамерау-Левенштейна
-/// </summary>
-int dist_Leven_Dam(string str1, string str2)
+static int GetDamerauLevenshteinDistance(string str1Param, string str2Param)
 {
-    if (str1 == null || str2 == null)
-    {
+    if ((str1Param == null) || (str2Param == null))
         return -1;
-    }
 
-    int len_str1 = str1.Length;
-    int len_str2 = str2.Length;
+    int str1Len = str1Param.Length;
+    int str2Len = str2Param.Length;
 
-    if (len_str1 == 0) return len_str2;
-    if (len_str2 == 0) return len_str1;
+    if ((str1Len == 0) && (str2Len == 0)) return 0;
+    if (str1Len == 0) return str2Len;
+    if (str2Len == 0) return str1Len;
 
+    string str1 = str1Param.ToUpper();
+    string str2 = str2Param.ToUpper();
 
-    int[,] Matrix = new int[len_str1 + 1, len_str2 + 1];
+    int[,] matrix = new int[str1Len + 1, str2Len + 1];
 
-    for (int i = 0; i <= len_str1; ++i)
+    for (int i = 0; i <= str1Len; i++)
+        matrix[i, 0] = i;
+    for (int j = 0; j <= str2Len; j++)
+        matrix[0, j] = j;
+
+    for (int i = 1; i <= str1Len; i++)
     {
-        Matrix[i, 0] = i;
-    }
-    for (int j = 0; j <= len_str2; ++j)
-    {
-        Matrix[0, j] = j;
-    }
-
-    for (int i = 1; i <= len_str1; ++i)
-    {
-        for (int j = 1; j <= len_str2; ++j)
+        for (int j = 1; j <= str2Len; j++)
         {
-            int cost = (s1[i - 1] == s2[j - 1]) ? 0 : 1;
+            int symbEqual = ((str1.Substring(i - 1, 1) == str2.Substring(j - 1, 1)) ? 0 : 1);
 
-            int ins = Matrix[i, j - 1] + 1;     
-            int del = Matrix[i - 1, j] + 1;      
-            int subst = Matrix[i - 1, j - 1] + cost; 
+            int ins = matrix[i, j - 1] + 1;
+            int del = matrix[i - 1, j] + 1;
+            int subst = matrix[i - 1, j - 1] + symbEqual;
 
-            Matrix[i, j] = Math.Min(Math.Min(ins, del), subst);
+            matrix[i, j] = Math.Min(Math.Min(ins, del), subst);
 
-            if (i > 1 && j > 1 &&
-                s1[i - 1] == s2[j - 2] &&
-                s1[i - 2] == s2[j - 1])
+            if ((i > 1) && (j > 1) &&
+                (str1.Substring(i - 1, 1) == str2.Substring(j - 2, 1)) &&
+                (str1.Substring(i - 2, 1) == str2.Substring(j - 1, 1)))
             {
-                Matrix[i, j] = Math.Min(Matrix[i, j], Matrix[i - 2, j - 2] + cost);
+                matrix[i, j] = Math.Min(matrix[i, j], matrix[i - 2, j - 2] + symbEqual);
             }
         }
     }
 
-    return Matrix[len_str1, len_str2];
+    return matrix[str1Len, str2Len];
 }
