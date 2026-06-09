@@ -1,4 +1,6 @@
-namespace ZooApp.Forms;
+using DZ3.Forms;
+
+namespace DZ3.Forms;
 
 /// <summary>
 /// Главное окно приложения с навигацией между разделами.

@@ -1,4 +1,4 @@
-namespace ZooApp.Models;
+namespace DZ3.Models;
 
 /// <summary>
 /// Животное (основная таблица, сторона «много»)

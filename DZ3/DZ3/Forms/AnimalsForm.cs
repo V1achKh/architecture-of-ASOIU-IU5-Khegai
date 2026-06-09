@@ -1,8 +1,8 @@
+using DZ3.Models;
 using Microsoft.EntityFrameworkCore;
-using ZooApp.Data;
-using ZooApp.Models;
+using DZ3.Data;
 
-namespace ZooApp.Forms;
+namespace DZ3.Forms;
 
 /// <summary>
 /// Форма управления животными (CRUD).

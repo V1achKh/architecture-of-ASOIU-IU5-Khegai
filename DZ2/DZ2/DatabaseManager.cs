@@ -208,7 +208,6 @@ class DatabaseManager
         cmd.ExecuteNonQuery();
     }
 
-    // ──────────── Выполнение произвольного запроса (для отчётов) ────────────
 
     /// <summary>
     /// Выполняет SQL-запрос и возвращает имена столбцов и строки результата.
@@ -238,7 +237,7 @@ class DatabaseManager
         return (columns, rows);
     }
 
-    // ──────────── [ГРУППА Г] Фильтр по зоопарку ────────────
+    // Фильтр по зоопарку 
 
     /// <summary>Получить животных конкретного зоопарка</summary>
     public List<Animal> GetAnimalsByZoo(int zooId)
