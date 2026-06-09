@@ -1,4 +1,4 @@
-namespace DZ3.Models;
+namespace ZooApp.Models;
 
 /// <summary>
 /// Зоопарк (справочная таблица, сторона «один»)

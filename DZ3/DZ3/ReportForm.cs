@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using DZ3.Data;
+using ZooApp.Data;
 
-namespace DZ3.Forms;
+namespace ZooApp.Forms;
 
 /// <summary>
 /// Форма отчётов.

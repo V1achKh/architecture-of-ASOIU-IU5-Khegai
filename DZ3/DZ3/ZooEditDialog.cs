@@ -1,4 +1,4 @@
-namespace DZ3.Forms;
+namespace ZooApp.Forms;
 
 /// <summary>
 /// Диалог добавления / редактирования зоопарка.

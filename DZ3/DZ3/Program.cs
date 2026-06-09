@@ -1,5 +1,5 @@
-using DZ3.Data;
-using DZ3.Forms;
+using ZooApp.Data;
+using ZooApp.Forms;
 
 namespace ZooApp;
 

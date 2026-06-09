@@ -1,6 +1,6 @@
-using DZ3.Models;
+using ZooApp.Models;
 
-namespace DZ3.Forms;
+namespace ZooApp.Forms;
 
 /// <summary>
 /// Диалог добавления / редактирования животного.

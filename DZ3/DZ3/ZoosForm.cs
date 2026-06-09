@@ -1,8 +1,8 @@
 using Microsoft.EntityFrameworkCore;
-using DZ3.Data;
-using DZ3.Models;
+using ZooApp.Data;
+using ZooApp.Models;
 
-namespace DZ3.Forms;
+namespace ZooApp.Forms;
 
 /// <summary>
 /// Форма управления справочником зоопарков (CRUD).
