@@ -1,7 +1,7 @@
+using DZ3.Models;
 using Microsoft.EntityFrameworkCore;
-using ZooApp.Models;
 
-namespace ZooApp.Data;
+namespace DZ3.Data;
 
 /// <summary>
 /// Контекст базы данных приложения.

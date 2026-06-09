@@ -24,7 +24,6 @@ class ReportBuilder
         _db = db;
     }
 
-    // ──────────── Промежуточные методы (возвращают this) ────────────
 
     /// <summary>SQL-запрос для отчёта</summary>
     public ReportBuilder Query(string sql)
